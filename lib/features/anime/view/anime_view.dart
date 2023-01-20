@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_test/features/add_anime/view/add_anime_view.dart';
-import 'package:riverpod_test/features/anime_list/provider/anime_list_provider.dart';
+import 'package:riverpod_test/features/anime/provider/anime_provider.dart';
 
 class AnimeListView extends ConsumerWidget {
   const AnimeListView({super.key});
