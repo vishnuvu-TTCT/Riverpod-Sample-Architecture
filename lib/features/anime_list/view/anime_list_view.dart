@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_test/features/anime_list/controller/anime_list_controller.dart';
+import 'package:riverpod_test/features/anime_list/provider/anime_list_provider.dart';
 
 class AnimeListView extends ConsumerWidget {
   const AnimeListView({super.key});
@@ -12,6 +12,7 @@ class AnimeListView extends ConsumerWidget {
     return animeAsync.when(
         data: (list) => Scaffold(
           appBar: AppBar(
+            backgroundColor: const Color(0xFF3889C4),
             title: const Text("Riverpod Test"),
             actions: [IconButton(onPressed: (){}, icon: const Icon(Icons.refresh))],
           ),

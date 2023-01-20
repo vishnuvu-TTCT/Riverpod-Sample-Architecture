@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:riverpod_test/di/di.dart';
 import 'package:riverpod_test/features/anime_list/view/anime_list_view.dart';
 import 'package:riverpod_test/routing/routes.dart';
 
@@ -12,7 +11,6 @@ Future<void> main() async {
   await Hive.initFlutter();
   await Hive.openBox('river-box');
   // Initialize GetIt [Dependency Injection]
-  initDI();
   runApp(const ProviderScope(child: MyApp()));
 }
 
