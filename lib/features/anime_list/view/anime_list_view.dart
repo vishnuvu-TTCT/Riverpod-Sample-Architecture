@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_test/features/add_anime/view/add_anime_view.dart';
 import 'package:riverpod_test/features/anime_list/provider/anime_list_provider.dart';
 
 class AnimeListView extends ConsumerWidget {
@@ -15,6 +16,10 @@ class AnimeListView extends ConsumerWidget {
               backgroundColor: const Color(0xFF3889C4),
               title: const Text("Riverpod Test"),
               actions: [
+                IconButton(onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> const AddAnimeScreen()));
+                }, icon: const Icon(Icons.looks_one_rounded)),
+                IconButton(onPressed: (){}, icon: const Icon(Icons.two_k)),
                 IconButton(
                     onPressed: () {
                       ref.refresh(animeProvider);
