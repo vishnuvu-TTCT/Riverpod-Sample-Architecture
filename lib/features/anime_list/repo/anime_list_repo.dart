@@ -8,7 +8,7 @@ import 'package:riverpod_test/features/anime_list/repo/anime_list_interface.dart
 import 'package:riverpod_test/service/api_provider.dart';
 
 final animeRepoProvider = Provider((ref) {
-  final apiHelper = ref.watch(apiHelperProvider);
+  final apiHelper = ref.read(apiHelperProvider);
   return AnimeRepo(apiHelper);
 });
 

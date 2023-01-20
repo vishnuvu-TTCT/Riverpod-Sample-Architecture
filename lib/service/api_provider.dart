@@ -11,7 +11,7 @@ import 'package:riverpod_test/service/hive_manager.dart';
 import 'package:riverpod_test/service/network_exception.dart';
 
 final apiHelperProvider = Provider((ref) {
-  final apiClient = ref.watch(apiClientProvider);
+  final apiClient = ref.read(apiClientProvider);
   return ApiHelper(apiClient);
 });
 
