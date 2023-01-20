@@ -11,21 +11,29 @@ class AnimeListView extends ConsumerWidget {
 
     return animeAsync.when(
         data: (list) => Scaffold(
-          appBar: AppBar(
-            backgroundColor: const Color(0xFF3889C4),
-            title: const Text("Riverpod Test"),
-            actions: [IconButton(onPressed: (){}, icon: const Icon(Icons.refresh))],
-          ),
-                body: ListView.separated(
-              itemBuilder: (context, index) => ListTile(
-                title: Text(list[index]!.anime.toString()),
-                leading: CircleAvatar(child: Text(list[index]!.anime!.substring(0, 1).toString())),
-              ),
-              itemCount: list!.length,
-              separatorBuilder: (BuildContext context, int index) {
-                return const Divider();
-              },
-            )),
+            appBar: AppBar(
+              backgroundColor: const Color(0xFF3889C4),
+              title: const Text("Riverpod Test"),
+              actions: [
+                IconButton(
+                    onPressed: () {
+                      ref.refresh(animeProvider);
+                    },
+                    icon: const Icon(Icons.refresh))
+              ],
+            ),
+            body: animeAsync.isRefreshing
+                ? const Scaffold(body: Center(child: CircularProgressIndicator()))
+                : ListView.separated(
+                    itemBuilder: (context, index) => ListTile(
+                      title: Text(list[index]!.anime.toString()),
+                      leading: CircleAvatar(child: Text(list[index]!.anime!.substring(0, 1).toString())),
+                    ),
+                    itemCount: list!.length,
+                    separatorBuilder: (BuildContext context, int index) {
+                      return const Divider();
+                    },
+                  )),
         error: (err, stack) => Scaffold(body: Center(child: Text('Error: $err  $stack'))),
         loading: () => const Scaffold(body: Center(child: CircularProgressIndicator())));
   }
