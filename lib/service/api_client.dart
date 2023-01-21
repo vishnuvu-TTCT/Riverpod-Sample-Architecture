@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:dio/dio.dart';
+import 'package:riverpod_test/data/endpoint/api_endpoints.dart';
 final apiClientProvider = Provider((ref) {
   return ApiClient();
 });
@@ -9,9 +10,9 @@ class ApiClient {
   Dio getDioClient() {
     late String baseUrl;
     if (kDebugMode) {
-      baseUrl = "https://animechan.vercel.app/";
+      baseUrl = ApiEndPoints.baseURL;
     } else {
-      baseUrl = "https://animechan.vercel.app/";
+      baseUrl = ApiEndPoints.baseURL;
     }
     var options = BaseOptions(
       baseUrl: baseUrl,

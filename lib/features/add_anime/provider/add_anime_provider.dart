@@ -1,19 +1,30 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_test/features/add_anime/model/add_anime.dart';
 
-final addAnimeProvider = StateNotifierProvider<AnimeCRUD, List<AddAnimeModel>>((ref) {
-  return AnimeCRUD();
-});
-  class AnimeCRUD extends StateNotifier<List<AddAnimeModel>> {
-  AnimeCRUD() : super([AddAnimeModel(anime: "Naruto", character: "Obito")]);
-  
+final addAnimeProvider = NotifierProvider<AnimeController, List<AddAnimeModel>>(AnimeController.new);
+
+class AnimeController extends Notifier<List<AddAnimeModel>> {
+  @override
+  List<AddAnimeModel> build() {
+    return []; ///<--- Initial State
+  }
+
   addAnime(String name, String character) {
-    state.add(AddAnimeModel(anime: name, character: character));
-    state = [...state];
+    // Method [One] to update List
+    /**************/
+    List<AddAnimeModel> animeList = [...state];
+    animeList.add(AddAnimeModel(anime: name, character: character));
+    state = animeList;
+    /**************/
+
   }
 
   removeAnime(AddAnimeModel animeModel) {
+    // Method [Two] to update List
+    /**************/
     state.remove(animeModel);
     state = [...state];
+    /**************/
+
   }
 }
