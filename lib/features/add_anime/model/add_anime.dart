@@ -1,7 +1,3 @@
-// To parse this JSON data, do
-//
-//     final addAnimeModel = addAnimeModelFromJson(jsonString);
-
 import 'dart:convert';
 
 List<AddAnimeModel> addAnimeModelFromJson(String str) => List<AddAnimeModel>.from(json.decode(str).map((x) => AddAnimeModel.fromJson(x)));

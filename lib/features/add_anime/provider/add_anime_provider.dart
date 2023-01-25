@@ -11,6 +11,7 @@ class AnimeController extends Notifier<List<AddAnimeModel>> {
 
   addAnime(String name, String character) {
     // Method [One] to update List
+    //you need to update the [state] to rebuild the UI
     /**************/
     List<AddAnimeModel> animeList = [...state];
     animeList.add(AddAnimeModel(anime: name, character: character));

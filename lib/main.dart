@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:riverpod_test/features/anime/view/anime_view.dart';
 import 'package:riverpod_test/routing/routes.dart';
 
 Future<void> main() async {
@@ -10,7 +9,6 @@ Future<void> main() async {
   // Initialize Hive [local storage]
   await Hive.initFlutter();
   await Hive.openBox('river-box');
-  // Initialize GetIt [Dependency Injection]
   runApp(const ProviderScope(child: MyApp()));
 }
 
@@ -23,13 +21,12 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Sample Riverpod',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const AnimeListView(),
-      routes: pageRoutes,
+      routerConfig: router,
     );
   }
 }

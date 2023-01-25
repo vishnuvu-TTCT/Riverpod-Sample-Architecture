@@ -9,7 +9,8 @@ class AddAnimeScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final nameController = TextEditingController(text: '');
     final characterController = TextEditingController(text: '');
-    final addAnime = ref.watch(addAnimeProvider);
+    final addAnimeBuilder = ref.watch(addAnimeProvider);
+    final animeListener = ref.read(addAnimeProvider.notifier);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFF3889C4),
@@ -44,18 +45,18 @@ class AddAnimeScreen extends ConsumerWidget {
             ),
           ),
           ElevatedButton(onPressed: (){
-            ref.read(addAnimeProvider.notifier).addAnime(nameController.text, characterController.text);
+            animeListener.addAnime(nameController.text, characterController.text);
           }, child: const Text("Add new anime")),
           Expanded(
             child: ListView.separated(
               shrinkWrap: true,
               itemBuilder: (context, index) => ListTile(
-                onTap: () => ref.read(addAnimeProvider.notifier).removeAnime(addAnime[index]),
-                title: Text(addAnime[index].anime),
-                subtitle: Text(addAnime[index].character),
+                onTap: () => animeListener.removeAnime(addAnimeBuilder[index]),
+                title: Text(addAnimeBuilder[index].anime),
+                subtitle: Text(addAnimeBuilder[index].character),
                 leading: const CircleAvatar(child: Text("0")),
               ),
-              itemCount: addAnime.length,
+              itemCount: addAnimeBuilder.length,
               separatorBuilder: (BuildContext context, int index) {
                 return const Divider();
               },
