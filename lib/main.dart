@@ -24,6 +24,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       title: 'Sample Riverpod',
       theme: ThemeData(
+        useMaterial3: true,
+
         primarySwatch: Colors.blue,
       ),
       routerConfig: router,
