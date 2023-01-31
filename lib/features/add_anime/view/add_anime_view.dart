@@ -13,7 +13,6 @@ class AddAnimeScreen extends ConsumerWidget {
     final animeListener = ref.read(addAnimeProvider.notifier);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFF3889C4),
         title: const Text("Add Anime"),
       ),
       body: Column(

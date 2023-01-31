@@ -1,7 +1,10 @@
+import 'dart:core';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_test/features/add_anime/model/add_anime.dart';
 import 'package:riverpod_test/features/add_anime/repo/add_anime_repo.dart';
 
+//Create a provider of the AnimeController to use in view
 final addAnimeProvider = NotifierProvider<AnimeController, List<AddAnimeModel>>(AnimeController.new);
 
 class AnimeController extends Notifier<List<AddAnimeModel>> implements AddAnimeRepo {
